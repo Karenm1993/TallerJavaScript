@@ -1,259 +1,386 @@
-// =========================
-// EJERCICIO 1 - EDAD
-// =========================
-// let edad = prompt("Ingrese su edad");
-// if (isNaN(edad)) {
-//   alert("Por favor ingrese un número válido");
-// } else if (edad < 18) {
-//   alert("Acceso denegado");
-// } else {
-//   alert("Bienvenido");
-// }
+// ==========================
+// NIVEL 1 (CON VALIDACIONES)
+// ==========================
 
+function ejercicio1() {
+    let edad = prompt("Ingrese su edad");
 
-// =========================
-// EJERCICIO 2 - HELADOS
-// =========================
-// let topping = prompt("Oreo, KitKat o Brownie");
-// let precio = 5;
+    if (!edad || isNaN(edad)) {
+        alert("Debe ingresar un número válido");
+        return;
+    }
 
-// switch (topping.toLowerCase()) {
-//   case "oreo": precio += 2; break;
-//   case "kitkat": precio += 3; break;
-//   case "brownie": precio += 4; break;
-//   default: alert("Topping no válido");
-// }
+    edad = Number(edad);
 
-// alert("Precio final: $" + precio);
+    if (edad < 18) {
+        alert("Acceso denegado");
+    } else {
+        alert("Bienvenido");
+    }
+}
 
+function ejercicio2() {
+    let precio = 5;
+    let topping = prompt("Oreo, KitKat o Brownie");
 
-// =========================
-// EJERCICIO 3 - PAR O IMPAR
-// =========================
-// let num = prompt("Ingrese número");
-// if (num % 2 == 0) {
-//   alert("Es par");
-// } else {
-//   alert("Es impar");
-// }
+    if (!topping) {
+        alert("Campo vacío");
+        return;
+    }
 
+    topping = topping.toLowerCase();
 
-// =========================
-// EJERCICIO 4 - DÍA SEMANA
-// =========================
-// let dia = parseInt(prompt("1 a 7"));
+    switch (topping) {
+        case "oreo":
+            precio += 2;
+            break;
+        case "kitkat":
+            precio += 3;
+            break;
+        case "brownie":
+            precio += 4;
+            break;
+        default:
+            alert("Topping no válido");
+            return;
+    }
 
-// switch (dia) {
-//   case 1: alert("Lunes"); break;
-//   case 2: alert("Martes"); break;
-//   case 3: alert("Miércoles"); break;
-//   case 4: alert("Jueves"); break;
-//   case 5: alert("Viernes"); break;
-//   case 6: alert("Sábado"); break;
-//   case 7: alert("Domingo"); break;
-//   default: alert("Error");
-// }
+    alert("Precio final: " + precio);
+}
 
+function ejercicio3() {
+    let num = prompt("Ingrese un número");
 
-// =========================
-// EJERCICIO 5 - CALCULADORA
-// =========================
-// let n1 = parseFloat(prompt("Número 1"));
-// let n2 = parseFloat(prompt("Número 2"));
-// let op = prompt("suma, resta, mult, div");
+    if (!num || isNaN(num)) {
+        alert("Debe ingresar un número válido");
+        return;
+    }
 
-// switch (op) {
-//   case "suma": alert(n1 + n2); break;
-//   case "resta": alert(n1 - n2); break;
-//   case "mult": alert(n1 * n2); break;
-//   case "div": alert(n1 / n2); break;
-// }
+    num = Number(num);
 
+    alert(num % 2 === 0 ? "Es par" : "Es impar");
+}
 
-// =========================
-// EJERCICIO 6 - PROMEDIO
-// =========================
-// let n1 = parseFloat(prompt("Nota 1"));
-// let n2 = parseFloat(prompt("Nota 2"));
-// let n3 = parseFloat(prompt("Nota 3"));
+function ejercicio4() {
+    let dia = prompt("Ingrese número del 1 al 7");
 
-// let promedio = (n1 + n2 + n3) / 3;
+    if (!dia || isNaN(dia)) {
+        alert("Número inválido");
+        return;
+    }
 
-// if (promedio >= 6) {
-//   alert("Aprobado");
-// } else {
-//   alert("Reprobado");
-// }
+    dia = Number(dia);
 
+    switch (dia) {
+        case 1: alert("Lunes"); break;
+        case 2: alert("Martes"); break;
+        case 3: alert("Miércoles"); break;
+        case 4: alert("Jueves"); break;
+        case 5: alert("Viernes"); break;
+        case 6: alert("Sábado"); break;
+        case 7: alert("Domingo"); break;
+        default: alert("Número fuera de rango");
+    }
+}
 
-// =========================
-// EJERCICIO 7 - MONEDA
-// =========================
-// let dolares = parseFloat(prompt("Dólares"));
-// let moneda = prompt("euros, pesos, soles");
+function ejercicio5() {
+    let n1 = prompt("Número 1");
+    let n2 = prompt("Número 2");
+    let op = prompt("suma, resta, mult, div");
 
-// let resultado;
+    if (!n1 || !n2 || isNaN(n1) || isNaN(n2)) {
+        alert("Ingrese números válidos");
+        return;
+    }
 
-// switch (moneda.toLowerCase()) {
-//   case "euros": resultado = dolares * 0.9; break;
-//   case "pesos": resultado = dolares * 4000; break;
-//   case "soles": resultado = dolares * 3.7; break;
-// }
+    if (!op) {
+        alert("Operación vacía");
+        return;
+    }
 
-// alert(resultado);
+    n1 = Number(n1);
+    n2 = Number(n2);
+    op = op.toLowerCase();
 
+    let resultado;
 
-// =========================
-// EJERCICIO 8 - CUENTA REGRESIVA
-// =========================
-// for (let i = 10; i >= 1; i--) {
-//   document.write(i + "<br>");
-// }
+    switch (op) {
+        case "suma": resultado = n1 + n2; break;
+        case "resta": resultado = n1 - n2; break;
+        case "mult": resultado = n1 * n2; break;
+        case "div":
+            if (n2 === 0) {
+                alert("No se puede dividir por 0");
+                return;
+            }
+            resultado = n1 / n2;
+            break;
+        default:
+            alert("Operación inválida");
+            return;
+    }
 
+    alert("Resultado: " + resultado);
+}
 
-// =========================
-// EJERCICIO 9 - SUMA
-// =========================
-// let n = parseInt(prompt("Número"));
-// let suma = 0;
+function ejercicio6() {
+    let n1 = prompt("Nota 1");
+    let n2 = prompt("Nota 2");
+    let n3 = prompt("Nota 3");
 
-// for (let i = 1; i <= n; i++) {
-//   suma += i;
-// }
+    if (!n1 || !n2 || !n3 || isNaN(n1) || isNaN(n2) || isNaN(n3)) {
+        alert("Ingrese notas válidas");
+        return;
+    }
 
-// alert(suma);
+    let promedio = (Number(n1) + Number(n2) + Number(n3)) / 3;
 
+    alert(promedio >= 6 ? "Aprobado" : "Reprobado");
+}
 
-// =========================
-// EJERCICIO 10 - MÚLTIPLOS
-// =========================
-// for (let i = 1; i <= 50; i++) {
-//   if (i % 5 === 0) {
-//     document.write(i + "<br>");
-//   }
-// }
+function ejercicio7() {
+    let dolares = prompt("Ingrese dólares");
+    let moneda = prompt("euros, pesos o soles");
 
+    if (!dolares || isNaN(dolares)) {
+        alert("Valor inválido");
+        return;
+    }
 
-// =========================
-// EJERCICIO 11 - CLAVE
-// =========================
-// let clave;
-// while (clave !== "SESAMO123") {
-//   clave = prompt("Clave");
-// }
-// alert("Correcta");
+    if (!moneda) {
+        alert("Campo vacío");
+        return;
+    }
 
+    dolares = Number(dolares);
+    moneda = moneda.toLowerCase();
 
-// =========================
-// EJERCICIO 12 - POTENCIAS
-// =========================
-// let num = parseInt(prompt("Número"));
-// for (let i = 1; i <= 5; i++) {
-//   document.write(num ** i + "<br>");
-// }
+    let resultado;
 
+    switch (moneda) {
+        case "euros": resultado = dolares * 0.9; break;
+        case "pesos": resultado = dolares * 4000; break;
+        case "soles": resultado = dolares * 3.7; break;
+        default:
+            alert("Moneda inválida");
+            return;
+    }
 
-// =========================
-// EJERCICIO 13 - POSITIVOS
-// =========================
-// let num;
-// do {
-//   num = parseInt(prompt("Número"));
-// } while (num >= 0);
+    alert("Resultado: " + resultado);
+}
 
+// ==========================
+// NIVEL 2
+// ==========================
 
-// =========================
-// EJERCICIO 14 - ARRAY
-// =========================
-// let productos = [];
-// for (let i = 0; i < 5; i++) {
-//   productos.push(prompt("Producto"));
-// }
-// document.write(productos);
+function ejercicio8() {
+    for (let i = 10; i >= 1; i--) {
+        console.log(i);
+    }
+}
 
+function ejercicio9() {
+    let n = prompt("Ingrese un número");
 
-// =========================
-// EJERCICIO 15 - BUSCAR
-// =========================
-// let nombres = ["Ana", "Luis", "Carlos", "Marta", "Sofia"];
-// let buscar = prompt("Nombre");
-// let encontrado = false;
+    if (!n || isNaN(n)) {
+        alert("Número inválido");
+        return;
+    }
 
-// for (let i = 0; i < nombres.length; i++) {
-//   if (nombres[i].toLowerCase() === buscar.toLowerCase()) {
-//     encontrado = true;
-//   }
-// }
+    n = Number(n);
+    let suma = 0;
 
-// alert(encontrado ? "Existe" : "No existe");
+    for (let i = 1; i <= n; i++) {
+        suma += i;
+    }
 
+    alert("Suma: " + suma);
+}
 
-// =========================
-// EJERCICIO 16 - OBJETO
-// =========================
-// let auto = {
-//   marca: "Toyota",
-//   modelo: "Corolla",
-//   año: 2020
-// };
+function ejercicio10() {
+    for (let i = 1; i <= 50; i++) {
+        if (i % 5 === 0) console.log(i);
+    }
+}
 
-// auto.año = prompt("Nuevo año");
-// console.log(auto);
+function ejercicio11() {
+    let clave;
 
+    while (clave !== "SESAMO123") {
+        clave = prompt("Ingrese la contraseña");
+    }
 
-// =========================
-// EJERCICIO 17 - ESTUDIANTES
-// =========================
-// let estudiantes = [];
-// for (let i = 0; i < 3; i++) {
-//   let nombre = prompt("Nombre");
-//   let nota = prompt("Nota");
-//   estudiantes.push({ nombre, nota });
-// }
-// console.log(estudiantes);
+    alert("Acceso concedido");
+}
 
+function ejercicio12() {
+    let num = prompt("Ingrese número");
 
-// =========================
-// EJERCICIO 18 - CARRITO
-// =========================
-// let total = 0;
-// let precio;
+    if (!num || isNaN(num)) {
+        alert("Número inválido");
+        return;
+    }
 
-// do {
-//   precio = parseFloat(prompt("Precio"));
-//   total += precio;
-// } while (precio !== 0);
+    num = Number(num);
 
-// if (total > 100) {
-//   total *= 0.9;
-// }
+    for (let i = 1; i <= 5; i++) {
+        console.log(num ** i);
+    }
+}
 
-// alert(total);
+function ejercicio13() {
+    let num;
 
+    do {
+        num = prompt("Número (negativo para salir)");
 
-// =========================
-// EJERCICIO 19 - MENÚ
-// =========================
-// let opcion;
-// do {
-//   opcion = prompt("1.Saludar 2.Despedir 3.Salir");
+        if (!num || isNaN(num)) {
+            alert("Número inválido");
+            continue;
+        }
 
-//   switch (opcion) {
-//     case "1": alert("Hola"); break;
-//     case "2": alert("Adiós"); break;
-//   }
+        num = Number(num);
 
-// } while (opcion !== "3");
+    } while (num >= 0);
 
+    alert("Fin");
+}
 
-// =========================
-// EJERCICIO 20 - REEMPLAZO
-// =========================
-// let numeros = [1, 2, 3, 4, 5];
+// ==========================
+// NIVEL 3
+// ==========================
 
-// let pos = parseInt(prompt("Posición"));
-// let nuevo = prompt("Nuevo valor");
+function ejercicio14() {
+    let productos = [];
 
-// numeros[pos] = nuevo;
+    for (let i = 0; i < 5; i++) {
+        let p = prompt("Producto " + (i + 1));
 
-// console.log(numeros);
+        if (!p) {
+            alert("Campo vacío");
+            i--;
+        } else {
+            productos.push(p);
+        }
+    }
+
+    console.log(productos);
+}
+
+function ejercicio15() {
+    let nombres = ["ana", "luis", "pedro", "sofia", "carlos"];
+    let buscar = prompt("Nombre");
+
+    if (!buscar) {
+        alert("Campo vacío");
+        return;
+    }
+
+    buscar = buscar.toLowerCase();
+
+    let encontrado = nombres.includes(buscar);
+
+    alert(encontrado ? "Existe" : "No existe");
+}
+
+function ejercicio16() {
+    let auto = {
+        marca: "Toyota",
+        modelo: "Corolla",
+        año: 2020
+    };
+
+    let nuevo = prompt("Nuevo año");
+
+    if (!nuevo || isNaN(nuevo)) {
+        alert("Año inválido");
+        return;
+    }
+
+    auto.año = Number(nuevo);
+
+    console.log(auto);
+}
+
+function ejercicio17() {
+    let estudiantes = [];
+
+    for (let i = 0; i < 3; i++) {
+        let nombre = prompt("Nombre");
+        let nota = prompt("Nota");
+
+        if (!nombre || !nota || isNaN(nota)) {
+            alert("Datos inválidos");
+            i--;
+        } else {
+            estudiantes.push({ nombre, nota: Number(nota) });
+        }
+    }
+
+    console.log(estudiantes);
+}
+
+function ejercicio18() {
+    let total = 0;
+    let precio;
+
+    do {
+        precio = prompt("Precio (0 para terminar)");
+
+        if (!precio || isNaN(precio)) {
+            alert("Valor inválido");
+            continue;
+        }
+
+        precio = Number(precio);
+        total += precio;
+
+    } while (precio !== 0);
+
+    if (total > 100) total *= 0.9;
+
+    alert("Total: " + total);
+}
+
+function ejercicio19() {
+    let opcion;
+
+    do {
+        opcion = prompt("1.Saludar 2.Despedirse 3.Salir");
+
+        switch (opcion) {
+            case "1": alert("Hola"); break;
+            case "2": alert("Adiós"); break;
+        }
+
+    } while (opcion !== "3");
+}
+
+function ejercicio20() {
+    let numeros = [1, 2, 3, 4, 5];
+
+    let valor = prompt("Nuevo valor");
+    let pos = prompt("Posición (0-4)");
+
+    if (!valor || !pos || isNaN(pos)) {
+        alert("Datos inválidos");
+        return;
+    }
+
+    pos = Number(pos);
+
+    if (pos < 0 || pos > 4) {
+        alert("Posición fuera de rango");
+        return;
+    }
+
+    numeros[pos] = valor;
+
+    console.log(numeros);
+}
+
+// ==========================
+// EJECUTA SOLO UNO
+// ==========================
+
+// ejercicio1();
